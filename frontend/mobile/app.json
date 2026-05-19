@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "StockFlow NG",
+    "slug": "stockflow-ng",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": ["**/*"]
+  }
+}
