@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: stockflow
+      POSTGRES_USER: stockflow
+      POSTGRES_PASSWORD: stockflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+    env_file:
+      - .env.example
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+
+  web:
+    build:
+      context: ./frontend/web
+    env_file:
+      - .env.example
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  postgres-data:

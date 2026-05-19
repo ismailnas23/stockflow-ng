@@ -1,0 +1,26 @@
+{
+  "name": "stockflow-ng",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "backend",
+    "frontend/web",
+    "frontend/mobile"
+  ],
+  "scripts": {
+    "dev:backend": "npm --workspace backend run dev",
+    "dev:web": "npm --workspace frontend/web run dev -- --port 3014",
+    "start:web": "npm --workspace frontend/web run start -- --port 3014",
+    "dev:mobile": "npm --workspace frontend/mobile run start",
+    "postinstall": "node ./scripts/patch-next-workerthreads.cjs",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces --if-present"
+  },
+  "dependencies": {
+    "parseurl": "^1.3.3",
+    "supports-color": "^10.2.2"
+  },
+  "devDependencies": {
+    "@types/babel__traverse": "^7.20.7"
+  }
+}
